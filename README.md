@@ -4,8 +4,9 @@ https://ide-run.goorm.io
 >source file.sql;
 
 ## Capitalize commands just to diffentiate what comes from sql and what is a custom name   
-## All commands:   
-```
+## All commands:
+
+```sql
 SHOW DATABASES;
 
 CREATE DATABASE hello_word;
@@ -74,7 +75,7 @@ SELECT cat_id, age FROM cats WHERE age = cat_id;
 ## Data types
 
 Numeric | String | Date
-------------------------
+--------|:------:|----------
 INT | VARCHAR(1,255) | DATE
 
 Tweet
@@ -82,7 +83,7 @@ username = VARCHAR(15)
 content = VARCHAR(140)
 likes = INT
 
-```
+```sql
 CREATE TABLE tablename(
   username VARCHAR(15),
   content VARCHAR(140),
@@ -92,8 +93,8 @@ CREATE TABLE tablename(
 ```
 
 Pastries table
-```
 
+```sql
 CREATE TABLE pastries(
   name VARCHAR(50),
   quantity INT
@@ -108,7 +109,7 @@ VALUES("john", 40), ("alves", 3), ("teal", 1);
 <p> Sql has a field NULL that allows or not a row value to be null. If you don't provide a value the sql will insert NULL values</p>
 <p>When you are creating a TABLE, you can specify NOT NULL</p>
 
-```
+```sql
 CREATE TABLE cats2(
   name VARCHAR(30) NOT NULL,
   age INT NOT NULL,
@@ -118,7 +119,7 @@ CREATE TABLE cats2(
 ## DEFAULT VALUE 
 <p>You can specify a default value that will furfill the table when you dont provide a value</p>
 
-```
+```sql
 CREATE TABLE cats3(
   name VARCHAR(100) DEFAULT 'unnamed',
   age INT DEFAULT 99
@@ -130,7 +131,7 @@ CREATE TABLE cats3(
 <p>Use NOT NULL and DEFAULT is redundant?</p>
 <p>NO, beacause you can put a NULL value manually. If you try to insert a NULL value with NOT NULL, a error will appears</p>
 
-```
+```sql
 CREATE TABLE cats4(
   name VARCHAR(30) NOT NULL DEFAULT 'no name provided',
   age INT NOT NULL DEFAULT 99
@@ -140,7 +141,7 @@ CREATE TABLE cats4(
 ## PRIMARY KEY
 <p>Unique ID</p>
 
-```
+```sql
 CREATE TABLE unique_cats(
   cat_id INT NOT NULL AUTO_INCREMENT,
   name NOT NULL DEFAULT 'unnamed',
@@ -151,7 +152,7 @@ CREATE TABLE unique_cats(
 
 ## Exercice session 4
 
-```
+```sql
 CREATE TABLE employees(
 	id INT NOT NULL AUTO_INCREMENT,
 	last_name VARCHAR(40) NOT NULL, 
@@ -165,7 +166,7 @@ CREATE TABLE employees(
 
 or 
 
-´´´
+```sql
 CREATE TABLE employees2(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(40) NOT NULL,
@@ -179,11 +180,11 @@ INSERT INTO employees2(first_name, last_name, age)
 VALUES('Carlos', 'Nobrega', 19);
 
 SELECT * FROM employees2;
-´´´
+```
 
 ## Restarting the cat table
 
-```
+```sql
 DROP TABLE cats;
 CREATE TABLE cats(
 	cat_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -205,68 +206,71 @@ VALUES ('Ringo', 'Tabby', 4),
 
 # CRUD
 C | CREATE
-----------
-R | READ
-U | UPDATE
-D | DELETE
+--|-------
+**R** | **READ**
+**U** | **UPDATE**
+**D** | **DELETE**
 
 ## READ
 
-```
+```sql
 SELECT name, age FROM cats;
 ```
 
 <p>WHERE will appears everyWHERE</p>
 SELECT * FROM cats WHERE breed='Tabby';
 
-```
+```sql
 SELECT name, breed FROM cats;
 ```
 
-```
+```sql
 SELECT name, age FROM cats WHERE breed='Tabby' ;
 ```
 
-```
+```sql
 SELECT cat_id, age FROM cats WHERE age <= 7;
 ```
 
 <p>Comparation is different from PL's</p>
-```
+
+```sql
 SELECT cat_id, age FROM cats WHERE age = cat_id;
 ```
 
 ## Alias
 <p>You can give a NICK to the field when it prints </p>
-```
+
+```sql
 SELECT cat_id AS id, name FROM cats;
 ```
 
 ## UPDATE
 <p>All breed's cats with breed='Tabby' will be changed to 'Shorthair</p>
-```
+
+```sql
 UPDATE cats SET breed='Shorthair'
 WHERE breed='Tabby'
 ```
 
 <p>Make sure you targgeting the right data</p>
 
-```
+```sql
 UPDATE cats SET age=14
 WHERE name='Misty';
 ```
 
-```
+```sql
 UPDATE cats SET name='Jack'
 WHERE name='Jackson';
 ```
 
-```
+```sql
 UPDATE cats SET breed='British Shorthair'
 WHERE name="Ringo";
 ```
 
-```
+```sql
 UPDATE cats SET age=12
 WHERE breed='Maine Coon';
 ```
@@ -275,18 +279,20 @@ WHERE breed='Maine Coon';
 
 <p>Very similar to UPDATE</p>
 
-```
+```sql
 DELETE FROM cats WHERE name='Egg';
 ```
 
 <p>Be carefull, this command deletes all data</p>
-```
+
+```sql
 DELETE FROM cats;
 ```
 
 ## Complete CRUD
 <p>CREATE</p>
-```
+
+```sql
 CREATE TABLE shirts(
 	shirt_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	article VARCHAR(20) NOT NULL,
@@ -308,45 +314,47 @@ VALUES ('t-shirt', 'white', 'S', 10),
 INSERT INTO shirts(article, color, shirt_size, last_won)
 VALUES ('polo', 'Purple', 'M', 50);
 
-
 ```
 
 <p>READ</p>
-```
+
+```sql
 SELECT article, color FROM shirts;
 SELECT * FROM shirts WHERE shirt_size='M';
 SELECT article, color, shirt_size, last_worn FROM shirts WHERE shirt_size='M';
 ```
 
 <p>UPDATE</p>
-```
+
+```sql
 UPDATE shirts SET shirt_size='L'
 WHERE article='polo shirt';
 ```
 
-```
+```sql
 UPDATE shirts SET last_worn=0
 WHERE last_worn=15;
 
 ```
 
-```
+```sql
 UPDATE shirts SET shirt_size='XS', color='off white'
 WHERE color='white';
 ```
 
 <p>DELETE</p>
-```
+
+```sql
 DELETE FROM shirts
 WHERE last_worn >= 200;
 ```
 
-```
+```sql
 DELETE FROM shirts
 WHERE article='tank top';
 ```
 
-```
+```sql
 DELETE FROM shirts;
 DROP TABLE shirts;
 
