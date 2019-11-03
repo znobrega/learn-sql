@@ -1,0 +1,18 @@
+- =
+- !=
+- LIKE and NOT LIKE
+- AND or &&
+- OR or ||
+- BETWEEN 244 AND 2000
+- NOT BETWEEN 244 AND 2000
+  <p>To make comparitions with date, is important to use `CAST('2019-01-02' AS DATETIME)`</p>
+- IN and NOT IN
+  <p>work like multiple OR's coditions</p>
+
+
+```sql
+case doesn't matter 
+'A' = 'a'
+
+SELECT * FROM books WHERE author_lname = 'Eggers' AND released_year > 2000 AND title LIKE '%novel%';
+```
