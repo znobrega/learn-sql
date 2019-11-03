@@ -135,3 +135,13 @@ SELECT '2100-12-31 23:59:59' +INTERVAL 1 DAY FROM people;
 SELECT '2100-12-31 23:59:59' +INTERVAL 1 DAY + INTERVAL 10 MONTH + INTERVAL 13 HOUR FROM books;
 ```
 
+#### Timestamp 
+```sql
+CREATE TABLE comments(
+    content VARCHAR(200),
+    created_at TIMESTAMP DEFAULT NOW()
+    updated_at TIMESTAMP DEAFAULT NOW() ON UPDATE NOW()
+);
+
+can use CURRENT_TIMESTAMP instead of NOW()
+
