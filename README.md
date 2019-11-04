@@ -3,8 +3,8 @@ https://ide-run.goorm.io
 >mysql-ctl cli
 >source file.sql;
 
-## Capitalize commands just to diffentiate what comes from sql and what is a custom name   
-## All commands:
+## Capitalize commands just to differentiate what comes from sql and what is a custom name   
+## Basic commands:
 
 ```sql
 SHOW DATABASES;
